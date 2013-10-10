@@ -16,7 +16,7 @@ end
 
 
 
-puts to_roman(2999)
+puts to_roman(1000)
 
 # describe 'Roman Numerals' do
 	
