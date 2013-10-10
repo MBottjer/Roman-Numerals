@@ -2,21 +2,33 @@ ROMAN_HASH = { 1000 => 'M', 900 => 'CM', 500 => 'D', 400 => 'CD', 100 => 'C',
                   50 => 'L', 40 => 'XL', 10 => 'X', 9 => 'IX', 5 => 'V', 4 => 'IV',
                   1 => 'I' }
 
-def to_roman(number)
-    
-    roman_string = ""
-    for value, numeral in ROMAN_HASH
-    	while value<=number
-    		roman_string<<numeral 
-    		number = number - value 
-    	end
-    end
-    roman_string
+def subtract_value_from_number(number, value)
+  number -= value
 end
 
+def value_less_than?(value, number)
+  value <= number
+end
 
+def iterate_over_hash(number)
+  number_converted_to_roman_numerals = ""
+  for value, numeral in ROMAN_HASH 
+    if value_less_than?(value, number)
+      number_converted_to_roman_numerals << numeral
+      number = subtract_value_from_number(number, value)
+    end
+  end
+  number_converted_to_roman_numerals
+end
 
-puts to_roman(1000)
+def to_roman(number)
+  iterate_over_hash(number)
+end
+
+puts "MUST TRY HARDER"
+
+puts to_roman(9)
+puts to_roman(11)
 
 # describe 'Roman Numerals' do
 	
